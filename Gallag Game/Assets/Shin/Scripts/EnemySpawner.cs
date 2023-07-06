@@ -7,8 +7,8 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject[] enemyPrefab;
 
-    public float spawnMin = 1.0f;
-    public float spawnMax = 100.0f;
+    public float spawnMin = 30.0f;
+    public float spawnMax = 60.0f;
     private float spawnRate = default;
 
     private Transform target = default;
@@ -43,11 +43,11 @@ public class EnemySpawner : MonoBehaviour
             timeAfterspawn = 0f;
             GameObject enemy = Instantiate(enemyPrefab[randomSpawn], transform.position, transform.rotation);
 
-            if(random_Target < 5)
+            if (random_Target < 5)
             {
                 enemy.transform.LookAt(target);
             }
-            
+
             spawnRate = Random.Range(spawnMin, spawnMax);
             randomSpawn = Random.Range(0, 7);
             random_Target = Random.Range(0, 10);

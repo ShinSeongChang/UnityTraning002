@@ -25,17 +25,15 @@ public class Enemys : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Destroy(this.gameObject);
-
-
+            Destroy(this.gameObject);          
             MoveCar player = GetComponent<MoveCar>();
 
-            //if (life_Count <=4)
-            //{
-            //    player.Die();
-            //}
         }
         else if (other.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
+        else if(other.tag == "Attack")
         {
             Destroy(this.gameObject);
         }

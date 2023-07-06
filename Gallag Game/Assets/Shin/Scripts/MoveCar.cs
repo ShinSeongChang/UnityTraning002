@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveCar : MonoBehaviour
 {
+    public GameObject attackPrefab = default;
     private Rigidbody playerRigidbody = default;
     public float speed = 15.0f;
     private int life_Count = 4;
@@ -17,6 +18,13 @@ public class MoveCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space) == true)
+        {
+            GameObject attack = Instantiate(attackPrefab, transform.position, transform.rotation);
+            //Quaternion.identity
+            //attack.transform.LookAt(new Vector3(0, 0, -1));
+        }
+
         float zInput = Input.GetAxis("Vertical");
         float xInput = Input.GetAxis("Horizontal");
 
