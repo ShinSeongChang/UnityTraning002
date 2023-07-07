@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public GameObject[] enemyPrefab;
+    public Transform spawnPoint = default;
 
     public float spawnMin = 30.0f;
     public float spawnMax = 60.0f;
@@ -41,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
         if(timeAfterspawn >= spawnRate)
         {
             timeAfterspawn = 0f;
-            GameObject enemy = Instantiate(enemyPrefab[randomSpawn], transform.position, transform.rotation);
+            GameObject enemy = Instantiate(enemyPrefab[randomSpawn], spawnPoint.position, spawnPoint.rotation);
 
             if (random_Target < 5)
             {

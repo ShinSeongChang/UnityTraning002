@@ -8,8 +8,8 @@ public class TreeSpawner : MonoBehaviour
 
     private int random_Tree = 0;
 
-    private float spawnMin = 0.5f;
-    private float spawnMax = 3.0f;
+    private float spawnMin = 2.0f;
+    private float spawnMax = 8.0f;
     private float spawnRate = default;
     private float timeAfterspawn = default;
 
@@ -29,6 +29,8 @@ public class TreeSpawner : MonoBehaviour
 
         if(timeAfterspawn >= spawnRate)
         {
+            timeAfterspawn = 0;
+
             GameObject.Instantiate(treePrefab[random_Tree], transform.position, transform.rotation);
 
         }

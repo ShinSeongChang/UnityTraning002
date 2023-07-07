@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     private Rigidbody attackRigidbody = default;
-    public float speed = 10.0f;
+    public float speed = 30.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +22,9 @@ public class Attack : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision collision)
     {
-        if(other.tag == "Enemy")
+        if(collision.collider.tag == "Enemy")
         {
             Destroy(this.gameObject);
         }

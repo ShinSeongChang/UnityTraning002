@@ -6,7 +6,8 @@ using UnityEngine;
 public class Enemys : MonoBehaviour
 {
     private Rigidbody enemyRigidbody = default;
-    public float speed = 7.0f;
+    public GameObject explosions = default;
+    private float speed = 15.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,22 +22,43 @@ public class Enemys : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter(Collider other)
+    //public void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.tag == "Player")
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //    else if (other.tag == "Wall")
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //    else if (other.tag == "Attack")
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //}
+
+    public void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "Player")
+        if (collision.collider.tag == "Player")
         {
-            Destroy(this.gameObject);          
-            MoveCar player = GetComponent<MoveCar>();
+            Destroy(this.gameObject);
+        }
+        else if(collision.collider.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
+        else if(collision.collider.tag == "Attack")
+        {
+            Instantiate(explosions, transform.position, transform.rotation);    
+            enemyRigidbody.AddForce(0f, 500f, -1000f);
+            Destroy(this.gameObject, 1.5f);
+        }
+        //else if(collision.collider.tag == "Enemy")
+        //{
+        //    enemyRigidbody.AddForce(0f, 500f, -1000f);
+        //    Destroy(this.gameObject, 1.5f);
+        //}
 
-        }
-        else if (other.tag == "Wall")
-        {
-            Destroy(this.gameObject);
-        }
-        else if(other.tag == "Attack")
-        {
-            Destroy(this.gameObject);
-        }
     }
-
 }
